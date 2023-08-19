@@ -1,0 +1,25 @@
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-0">
+        <a class="navbar-brand" style="color:#ffc800" href="{% url 'mainpage' %}">Happy Bank</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'mainpage' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'company' %}">은행 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'service' %}">서비스</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">금융 상품</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'card' %}">카드</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cs' %}">고객의 소리</a></li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" style="color:#ffc800" href="{% url 'accounts:logout' %}"><span class="material-symbols-outlined">logout</span></a></li>
+                <li class="nav-item"><a class="nav-link" style="color:#ffc800" href="{% url 'accounts:mypage' %}"><span class="material-symbols-outlined">account_circle</span></a></li>
+
+                {% else %}
+                <li class="nav-item"><a class="nav-link" style="color:#ffc800" href="{% url 'accounts:login' %}"><span class="material-symbols-outlined">login</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

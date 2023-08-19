@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<signupbody>
+    <div style="text-align:left; width:48%" class="container">
+        <h2 style="text-align: center; margin-bottom:30px;">Sign up<br></h2>
+
+        <form method="post">
+          {% csrf_token %}
+<!--        fields = ("name", "username", "password1", "password2", "email")-->
+          <table style="margin-bottom:30px;">
+            <tr>
+                <td>이름 : </td>
+                <td>{{ form.name }}</td>
+            </tr>
+              <tr>
+                <td>이메일 : </td>
+                <td>{{ form.email }}</td>
+            </tr>
+              <tr>
+                <td>사용자 이름 : </td>
+                <td> {{ form.username }}</td>
+              </tr>
+              <tr>
+                <td>비밀번호 : </td>
+                <td> {{ form.password1 }}</td>
+                  <td><p>150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.</p></td>
+              </tr>
+              <tr>
+                <td>비밀번호 확인 : </td>
+                <td> {{ form.password2 }}</td>
+              </tr>
+
+          </table>
+
+          <ul>
+              <li>다른 개인 정보와 유사한 비밀번호는 사용할 수 없습니다.</li>
+              <li>비밀번호는 최소 8자 이상이어야 합니다.</li>
+              <li>통상적으로 자주 사용되는 비밀번호는 사용할 수 없습니다.</li>
+              <li>숫자로만 이루어진 비밀번호는 사용할 수 없습니다.</li>
+          </ul>
+
+        <div class="btn-area">
+            <button type="submit">Sign Up</button>
+        </div>
+
+<!--          {{ form.as_table }} &lt;!&ndash;뷰(view)로부터 전달받을 파라미터를 <p>태그로 감싸서 랜더링&ndash;&gt;-->
+
+        </form>
+    </div>
+</signupbody>
+
+<style>
+
+signupbody {
+  color:#212529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+p{
+    color:red;
+    margin-top:20px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.btn-area {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-top: 30px;
+}
+
+.btn-area button {
+  width: 100%;
+  height: 50px;
+  margin: 0px 10px;
+  color: #212529;
+  background: #ffc800;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-area smallButton {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+  color: #212529;
+  background: #ffc800;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+</style>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<loginbody>
+    <div style="width:25%" class="container">
+        <h2 style="text-align: center; margin-bottom:30px;">LOGIN<br></h2>
+
+       <form method="post" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <table style="margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+
+            <div class="btn-area">
+                <button type="submit">LOGIN</button>
+            </div>
+
+       </form>
+
+        {% if form.errors %}
+        <p>* 아이디 또는 비밀번호가 틀립니다.</p>
+        {% endif %}
+
+        <div class="caption">
+            <a href="">ID/PW 찾기</a>|
+            <a href="{% url 'accounts:signup'%}">sign up</a>
+        </div>
+    </div>
+</loginbody>
+
+<style>
+
+loginbody {
+  color:#212529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+p{
+    color:red;
+    margin-top:20px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.btn-area {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-top: 30px;
+}
+
+.btn-area button {
+  width: 100%;
+  height: 50px;
+  margin: 0px 10px;
+  color: #212529;
+  background: #ffc800;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-area smallButton {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+  color: #212529;
+  background: #ffc800;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.caption {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.caption a {
+  margin: 0 20px;
+  font-size: 15px;
+  color: blue;
+  text-decoration: none;
+}
+
+</style>
+{% endblock %}
