@@ -6,7 +6,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'mainpage' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'company' %}">은행 소개</a></li>
+                <li class="dropdown">
+                    <div class="nav-link">은행 소개</div>
+                    <div class="dropdown-content">
+                        <a href="{% url 'company' %}">인사말</a>
+                        <a href="{% url 'history' %}">연혁</a>
+                    </div>
+                </li>
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'company' %}">은행 소개</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="{% url 'service' %}">서비스</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">금융 상품</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'card' %}">카드</a></li>
@@ -23,3 +30,37 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .dropdown{
+        position:relative;
+    }
+    .nav-item{
+        cursor:pointer;
+    }
+    .dropdown-content{
+        position: absolute;
+    }
+    .dropdown-content a{
+        width:150px;
+        height:50px;
+        color:white;
+        font-size:14px;
+        background-color:#343A40;
+        padding:12px 50px;
+        text-decoration:none;
+        text-align:center;
+        display: block;
+    }
+    .dropdown-content{
+        display: none;
+    }
+    .dropdown-content a:hover{
+        color:black;
+        background-color: #f1f1f1
+    }
+    .dropdown:hover .dropdown-content{
+        display: block;
+    }
+
+</style>

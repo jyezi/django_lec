@@ -1,4 +1,189 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>금융상품 페이지</h1>
+ <!-- product Grid-->
+<section class="page-section" id="product">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading">금융 상품</h2>
+            <h3 class="section-subheading text-muted">맞춤 금융 상품을 만나보세요.</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- product item 1-->
+                <div class="product-item">
+                    <a class="product-link" data-bs-toggle="modal" href="#productModal1">
+                        <img class="img-fluid" src="{% static 'image/deposit.jpeg' %}" alt="..." />
+                    </a>
+                    <div class="product-caption">
+                        <div class="product-caption-heading">예금</div>
+                        <div class="product-caption-subheading text-muted">목돈을 키우고 저축해보세요.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- product item 2-->
+                <div class="product-item">
+                    <a class="product-link" data-bs-toggle="modal" href="#productModal2">
+<!--                                <div class="product-hover">-->
+<!--                                    <div class="product-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+                        <img class="img-fluid" src="{% static 'image/fund.png' %}" alt="..." />
+                    </a>
+                    <div class="product-caption">
+                        <div class="product-caption-heading">펀드</div>
+                        <div class="product-caption-subheading text-muted">다양한 자산에 투자하고 수익을 내보세요.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- product item 3-->
+                <div class="product-item">
+                    <a class="product-link" data-bs-toggle="modal" href="#productModal3">
+<!--                                <div class="product-hover">-->
+<!--                                    <div class="product-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+                        <img class="img-fluid" src="{% static 'image/loan.jpeg' %}" alt="..." />
+                    </a>
+                    <div class="product-caption">
+                        <div class="product-caption-heading">대출</div>
+                        <div class="product-caption-subheading text-muted">당신의 꿈을 위한 대출 상품을 만나보세요.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                <!-- product item 4-->
+                <div class="product-item">
+                    <a class="product-link" data-bs-toggle="modal" href="#productModal4">
+<!--                                <div class="product-hover">-->
+<!--                                    <div class="product-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+                        <!-- <i class="fa-solid fa-house-fire"></i> -->
+                        <img class="img-fluid" src="{% static 'image/insurance.jpeg' %}" alt="..." />
+                    </a>
+                    <div class="product-caption">
+                        <div class="product-caption-heading">보험</div>
+                        <div class="product-caption-subheading text-muted">안정적인 미래, 함께 만들어요.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                <!-- product item 5-->
+                <div class="product-item">
+                    <a class="product-link" data-bs-toggle="modal" href="#productModal5">
+<!--                                <div class="product-hover">-->
+<!--                                    <div class="product-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+                        <img class="img-fluid" src="{% static 'image/retirement.jpeg' %}" alt="..." />
+                    </a>
+                    <div class="product-caption">
+                        <div class="product-caption-heading">퇴직연금</div>
+                        <div class="product-caption-subheading text-muted">든든한 노후를 위한 퇴직연금을 만나보세요.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.page-section {
+  padding: 6rem 0;
+}
+.page-section h2.section-heading, .page-section .section-heading.h2 {
+  font-weight:600;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.page-section h3.section-subheading, .page-section .section-subheading.h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 4rem;
+}
+
+#product .product-item {
+  max-width: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+#product .product-item .product-link {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+#product .product-item .product-link .product-hover {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 200, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity ease-in-out 0.25s;
+}
+#product .product-item .product-link .product-hover .product-hover-content {
+  font-size: 1.25rem;
+  color: white;
+}
+#product .product-item .product-link:hover .product-hover {
+  opacity: 1;
+}
+#product .product-item .product-caption {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #fff;
+}
+#product .product-item .product-caption .product-caption-heading {
+  font-size: 1.5rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  margin-bottom: 0;
+}
+#product .product-item .product-caption .product-caption-subheading {
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.product-modal .modal-dialog {
+  margin: 1rem;
+  max-width: 100vw;
+}
+.product-modal .modal-content {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  text-align: center;
+}
+.product-modal .modal-content h2, .product-modal .modal-content .h2 {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+.product-modal .modal-content p.item-intro {
+  margin-bottom: 2rem;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.product-modal .modal-content p {
+  margin-bottom: 2rem;
+}
+.product-modal .modal-content ul.list-inline {
+  margin-bottom: 2rem;
+}
+.product-modal .modal-content img {
+  margin-bottom: 2rem;
+}
+.product-modal .close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+.product-modal .close-modal:hover {
+  opacity: 0.3;
+}
+
+</style>
 {% endblock %}

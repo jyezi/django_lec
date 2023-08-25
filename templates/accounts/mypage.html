@@ -1,42 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<mypagebody>
+<section class="page-section">
     <div style="text-align:left; width:48%" class="container">
-        <h2 style="text-align: center; margin-bottom:30px;">Mypage<br></h2>
+        <h2>Mypage<br></h2>
+        {% if id == "admin" %}
+        <p style="color:blue;">[ 관리자 ]</p>
+        {% elif first_name and last_name %}
+        <p>이름 : {{ last_name }}{{ first_name }}</p>
+        {% endif %}
+        <p>아이디 : {{ id }}</p>
+        <p>이메일 : {{ email }}</p>
 
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }} <!--뷰(view)로부터 전달받을 파라미터를 <p>태그로 감싸서 랜더링-->
-
-          <div class="btn-area">
+        <div class="btn-area">
             <button type="submit">변경하기</button>
         </div>
         </form>
     </div>
-</mypagebody>
+</section>
 
 
 <style>
 
-mypagebody {
-  color:#212529;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 75vh;
+.page-section {
+  padding: 11rem 0;
 }
-
-p{
-    color:red;
-    margin-top:20px;
-    margin-bottom:20px;
-    text-align:center;
+.page-section h2 {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
 }
-
 .btn-area {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-area button {
@@ -51,22 +50,11 @@ p{
   cursor: pointer;
 }
 
-.btn-area smallButton {
-  width: 100%;
-  height: 40px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 10px;
-  color: #212529;
-  background: #ffc800;
-  border: none;
-  border-radius: 20px;
-  font-size: 18px;
-  cursor: pointer;
+p{
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:50px;
 }
-
 
 </style>
 {% endblock %}

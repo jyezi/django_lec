@@ -1,7 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>{{content_list.title}}</h2>
-<div>
-  {{content_list.content | linebreaksbr}}
+<div class="container mt-5 mb-5 px-4 px-lg-5">
+  <h2>{{content_list.title}}</h2>
+  <div>
+    {{content_list.content | linebreaksbr}}
+  </div>
+
+  <br/>
+
+  <section>
+    <div class="card bg-light">
+      <div class="card-body">
+        <p style="color:blue;">* 로그인 후 댓글 작성이 가능합니다.</p>
+        <form method="post" class="mb-4" action="{% url 'comment_create' content_list.id %}">
+          {% csrf_token %}
+          <textarea id="content" name="content" class="form-control" rows="3" placeholder="내용을 입력해주세요."></textarea>
+          <button type="submit" class="btn btn-primary">submit</button>
+        </form>
+        {% for comment in content_list.comment_set.all %}
+        <div class="d-flex">
+          <div class="ms-3" style="inline-block">
+            <div class="fw-bold">{{ comment.author.username }} &nbsp</div>
+
+            {{ comment.content }}
+
+            <div style="color:gray;">
+            {{ comment.create_date }}
+              {% if comment.create_date != comment.modify_date %}
+              | 수정일자 : {{ comment.modify_date }}
+              {% endif %}
+              {% if request.user == comment.author %}
+                <a href="{% url 'comment_update' comment.id %}" class="btn btn-sm btn-outline-secondary">수정</a>
+                <a href="{% url 'comment_delete' comment.id %}" class="btn btn-sm btn-outline-secondary">삭제</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <br/>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

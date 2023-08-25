@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <!-- Page Content-->
 <div class="container px-4 px-lg-5">
     <!-- Heading Row-->
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
-            {% if content_list %}
-                {% for content in content_list %}
-                    <hr/>
-                    <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
-                    <div class="col-lg-5">
-                        <h3><a href="{% url 'detail' content.id %}">{{content.title}}</a></h3>
-                        <h5>{{content.content | truncatewords:7}}</h5>
-                        <a class="btn btn-primary" href="{% url 'detail' content.id %}">상품 상세보기</a>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>content 가 없습니다.</p>
-            {% endif %}
+        {% if content_list %}
+            {% for content in content_list %}
+                <hr/>
+                {% if content.title == '행복 더블 카드' %}
+                    <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'image/card1.png' %}" alt="..." /></div>
+                {% else %}
+                    <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'image/card3.png' %}" alt="..." /></div>
+                {% endif %}
+                <div class="col-lg-5">
+                    <h3><a href="{% url 'detail' content.id %}" class="content_title">{{content.title}}</a></h3>
+                    <h5>{{content.content | truncatewords:6}}</h5>
+                    <a class="btn btn-primary btn-m" href="{% url 'detail' content.id %}">상세보기</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>content 가 없습니다.</p>
+        {% endif %}
 <!--                    <h1 class="font-weight-light">Business Name or Tagline</h1>-->
 <!--                    <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>-->
     </div>
@@ -55,4 +60,17 @@
         </div>
     </div>
 </div>
+
+<style>
+.btn-m, .btn-sm{
+    border: none;
+    background-color: #ffc800;
+    color:black;
+}
+.content_title{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+</style>
 {% endblock %}
