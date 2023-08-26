@@ -15,7 +15,7 @@
                 {% endif %}
                 <div class="col-lg-5">
                     <h3><a href="{% url 'detail' content.id %}" class="content_title">{{content.title}}</a></h3>
-                    <h5>{{content.content | truncatewords:6}}</h5>
+                    <h5>{{content.content | truncatewords:8}}</h5>
                     <a class="btn btn-primary btn-m" href="{% url 'detail' content.id %}">상세보기</a>
                 </div>
             {% endfor %}
